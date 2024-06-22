@@ -79,6 +79,7 @@ def print_con(st1,st2):
 
 
 
+
 use_cli=True
 city_name=None
 if 'google.colab' in str(get_ipython()) or check_streamlit():
@@ -111,27 +112,36 @@ if not city_name:
     else:
         city_name = input("Enter city name: ")
 
-wheather = get_city_wheather_info(city_name)
+weather = get_city_wheather_info(city_name)
 
-if wheather:
-    if wheather["cod"] != "404":
+if weather:
+    if weather["cod"] != "404":
         local_date_time = get_local_time()
-        date_time = get_friendly_datetime(city_name, wheather['coord']['lon'], wheather['coord']['lat'])
-        y = wheather["main"]
+        date_time = get_friendly_datetime(city_name, weather['coord']['lon'], weather['coord']['lat'])
+        y = weather["main"]
         current_temperature = y["temp"]
         fahrenheit_temperature = (current_temperature * 1.8) + 32
         current_pressure = y["pressure"]
         current_humidiy = y["humidity"]
-        z = wheather["weather"]
+        z = weather["weather"]
         weather_description = z[0]["description"]
         print_con('Local Time : ', str(local_date_time))
         print_con(city_name + ' Time : ', str(date_time))
         print_con('--------------------------------', "")
-        print_con('City : ', str(wheather["name"]))
-        print_con('Country : ', str(wheather["sys"]["country"]))
+        print_con('City : ', str(weather["name"]))
+        print_con('Country : ', str(weather["sys"]["country"]))
         print_con('Weather Description : ', str(weather_description))
-        print_con('Temperature (C/F) : ', str(current_temperature)+"/"+str(fahrenheit_temperature))
+        print_con('Temperature (C/F) : ', str(round(current_temperature,0))+"/"+str(round(fahrenheit_temperature,0)))
         print_con('atmospheric pressure (in hPa unit) : ', str(current_pressure))
         print_con('humidity (in percentage) : ', str(current_humidiy))
+        map_design = pd.DataFrame({"col1": weather['coord']['lon'],
+                                   "col2": weather['coord']['lat'],
+                                   "col3": '#FFCCCB',
+                                   "col4": 200}, index=[0])
+        st.map(map_design,
+           latitude='col2',
+           longitude='col1',
+           size='col4',
+           color='col3')
     else:
         print_con(f"{city_name} Not Found ")
