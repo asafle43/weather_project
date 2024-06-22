@@ -69,6 +69,13 @@ def check_streamlit():
         use_streamlit = False
     return use_streamlit
 
+def print_con(st1,st2):
+    if 'google.colab' in str(get_ipython()):
+        print(f"{st1} {st2}")
+    elif check_streamlit():
+        st.markdown(f"{st1} {st2}")
+    else:
+        print(f"{st1} {st2}")
 
 
 
@@ -117,14 +124,14 @@ if wheather:
         current_humidiy = y["humidity"]
         z = wheather["weather"]
         weather_description = z[0]["description"]
-        print('Local Time : ', str(local_date_time))
-        print(city_name + ' Time : ', str(date_time))
-        print('--------------------------------', "")
-        print('City : ', str(wheather["name"]))
-        print('Country : ', str(wheather["sys"]["country"]))
-        print('Weather Description : ', str(weather_description))
-        print('Temperature (C/F) : ', str(current_temperature)+"/"+str(fahrenheit_temperature))
-        print('atmospheric pressure (in hPa unit) : ', str(current_pressure))
-        print('humidity (in percentage) : ', str(current_humidiy))
+        print_con('Local Time : ', str(local_date_time))
+        print_con(city_name + ' Time : ', str(date_time))
+        print_con('--------------------------------', "")
+        print_con('City : ', str(wheather["name"]))
+        print_con('Country : ', str(wheather["sys"]["country"]))
+        print_con('Weather Description : ', str(weather_description))
+        print_con('Temperature (C/F) : ', str(current_temperature)+"/"+str(fahrenheit_temperature))
+        print_con('atmospheric pressure (in hPa unit) : ', str(current_pressure))
+        print_con('humidity (in percentage) : ', str(current_humidiy))
     else:
-        print(f"{city_name} Not Found ")
+        print_con(f"{city_name} Not Found ")
