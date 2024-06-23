@@ -137,7 +137,7 @@ if weather:
             sunset = weather["sys"]['sunset']
             sunset_date = datetime.datetime.fromtimestamp(sunset)
             sunrise = weather["sys"]['sunrise']
-            sunrise_date = datetime.datetime.fromtimestamp(sunrise)
+            sunrise_date = datetime.datetime.utcfromtimestamp(sunrise)
             print_con('	:sunrise:', str(sunrise_date))
             print_con(':city_sunset:', str(sunset_date))
         with col2:
