@@ -14,4 +14,6 @@ https://weatherproject-qymhskrgsnxqxslubfkdln.streamlit.app/
 For execute the app, please run the 'main.py' file.
 
 
+![Alt text](/Users/aslevi/Desktop/Screenshot 2024-06-23 at 16.27.37.png)
+
 
