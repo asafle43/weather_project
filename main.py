@@ -36,17 +36,17 @@ def get_friendly_datetime(city_name, longitude, latitude):
         return (f"Error: '{timezone_str}' is not a valid timezone.")
 
 def get_local_time():
-    local_date_time = None
+    local_datetime = None
     try:
         geo = geocoder.ip('me')
         if geo.current_result is not None:
             coordinates = geo.latlng
             if coordinates is not None:
                 latitude, longitude = coordinates
-                local_date_time = get_friendly_datetime(geo.current_result.address, longitude, latitude)
-        return local_date_time
+                local_datetime = get_friendly_datetime(geo.current_result.address, longitude, latitude)
+        return local_datetime
     except:
-        return local_date_time
+        return local_datetime
 
 def get_city_wheather_info(city_name):
     api_url = "http://api.openweathermap.org/data/2.5/weather?"
@@ -118,7 +118,7 @@ weather = get_city_wheather_info(city_name)
 
 if weather:
     if weather["cod"] != "404":
-        local_date_time = get_local_time()
+        local_datetime = get_local_time()
         date_time = get_friendly_datetime(city_name, weather['coord']['lon'], weather['coord']['lat'])
         y = weather["main"]
         current_temperature = y["temp"]
@@ -134,7 +134,7 @@ if weather:
             print_con('Country : ', str(weather["sys"]["country"]))
             print_con('City : ', str(weather["name"]))
         with col2:
-            print_con('Local Time : ', str(local_date_time))
+            print_con('Local Time : ', str(local_datetime))
             print_con('Weather Description : ', str(weather_description))
             print_con('Temperature (C/F) : ',
                       str(round(current_temperature, 0)) + "/" + str(round(fahrenheit_temperature, 0)))
