@@ -136,6 +136,9 @@ if weather:
             print_con('City : ', str(weather["name"]))
             sunset = weather["sys"]['sunset']
             sunset_date = datetime.datetime.fromtimestamp(sunset)
+            sunrise = weather["sys"]['sunrise']
+            sunrise_date = datetime.datetime.fromtimestamp(sunrise)
+            print_con('	:sunrise:', str(sunrise_date))
             print_con(':city_sunset:', str(sunset_date))
         with col2:
             print_con('Local Time : ', str(local_date_time))
