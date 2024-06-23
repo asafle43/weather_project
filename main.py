@@ -134,12 +134,6 @@ if weather:
             print_con(city_name + ' Time : ', str(date_time))
             print_con('Country : ', str(weather["sys"]["country"]))
             print_con('City : ', str(weather["name"]))
-            sunset = weather["sys"]['sunset']
-            sunset_date = datetime.datetime.fromtimestamp(sunset)
-            sunrise = weather["sys"]['sunrise']
-            sunrise_date = datetime.datetime.utcfromtimestamp(sunrise)
-            print_con('	:sunrise:', str(sunrise_date))
-            print_con(':city_sunset:', str(sunset_date))
         with col2:
             print_con('Local Time : ', str(local_date_time))
             print_con('Weather Description : ', str(weather_description))
