@@ -1,6 +1,5 @@
 
 import timezonefinder
-from datetime import datetime
 import pytz
 import argparse
 import geocoder
