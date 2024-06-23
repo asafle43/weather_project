@@ -40,7 +40,7 @@ def get_local_time():
     try:
         geo = geocoder.ip('me')
         if geo.current_result is not None:
-            coordinates = geocoder.latlng
+            coordinates = geo.latlng
             if coordinates is not None:
                 latitude, longitude = coordinates
                 local_date_time = get_friendly_datetime(geo.current_result.address, longitude, latitude)
