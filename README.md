@@ -7,3 +7,5 @@ In addition, the app provides also the user's weather and time zone automaticall
 I developed the application in a Python environment (all the installations are in a .toml file using Poetry) and is presented 
 by the Streamlit package.
 The data is transferred automatically using the OpenWeatherMap api.
+
+The APP URL is - "https://weatherproject-qymhskrgsnxqxslubfkdln.streamlit.app/"
