@@ -8,4 +8,10 @@ I developed the application in a Python environment (all the installations are i
 by the Streamlit package.
 The data is transferred automatically using the OpenWeatherMap api.
 
-The APP URL is - "https://weatherproject-qymhskrgsnxqxslubfkdln.streamlit.app/"
+For using the App provides URL-
+https://weatherproject-qymhskrgsnxqxslubfkdln.streamlit.app/
+
+For execute the app, please run the 'main.py' file.
+
+
+
