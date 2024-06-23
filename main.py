@@ -139,8 +139,8 @@ if weather:
             print_con('Weather Description : ', str(weather_description))
             print_con('Temperature (C/F) : ',
                       str(round(current_temperature, 0)) + "/" + str(round(fahrenheit_temperature, 0)))
-            print_con('atmospheric pressure (in hPa unit) : ', str(current_pressure))
-            print_con('humidity (in percentage) : ', str(current_humidiy))
+            print_con('Atmospheric Pressure (in hPa unit) : ', str(current_pressure))
+            print_con('Humidity (in percentage) : ', str(current_humidiy))
 
         map_design = pd.DataFrame({"col1": weather['coord']['lon'],
                                    "col2": weather['coord']['lat'],
