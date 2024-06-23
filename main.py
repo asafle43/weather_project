@@ -11,6 +11,7 @@ import pandas as pd
 from IPython import get_ipython
 import creds
 
+
 def get_time_zone_by_location(longitude, latitude):
     tf = timezonefinder.TimezoneFinder()
     timezone_str = tf.certain_timezone_at(lat=latitude, lng=longitude)
@@ -114,6 +115,7 @@ if not city_name:
 
 weather = get_city_wheather_info(city_name)
 
+
 if weather:
     if weather["cod"] != "404":
         local_date_time = get_local_time()
@@ -125,15 +127,21 @@ if weather:
         current_humidiy = y["humidity"]
         z = weather["weather"]
         weather_description = z[0]["description"]
-        print_con('Local Time : ', str(local_date_time))
-        print_con(city_name + ' Time : ', str(date_time))
-        print_con('--------------------------------', "")
-        print_con('City : ', str(weather["name"]))
-        print_con('Country : ', str(weather["sys"]["country"]))
-        print_con('Weather Description : ', str(weather_description))
-        print_con('Temperature (C/F) : ', str(round(current_temperature,0))+"/"+str(round(fahrenheit_temperature,0)))
-        print_con('atmospheric pressure (in hPa unit) : ', str(current_pressure))
-        print_con('humidity (in percentage) : ', str(current_humidiy))
+
+        col1, col2 = st.columns(2)
+        with col1:
+            str(print_con(city_name,""))
+            print_con(city_name + ' Time : ', str(date_time))
+            print_con('Country : ', str(weather["sys"]["country"]))
+            print_con('City : ', str(weather["name"]))
+        with col2:
+            print_con('Local Time : ', str(local_date_time))
+            print_con('Weather Description : ', str(weather_description))
+            print_con('Temperature (C/F) : ',
+                      str(round(current_temperature, 0)) + "/" + str(round(fahrenheit_temperature, 0)))
+            print_con('atmospheric pressure (in hPa unit) : ', str(current_pressure))
+            print_con('humidity (in percentage) : ', str(current_humidiy))
+
         map_design = pd.DataFrame({"col1": weather['coord']['lon'],
                                    "col2": weather['coord']['lat'],
                                    "col3": '#FFCCCB',
