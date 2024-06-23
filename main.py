@@ -5,7 +5,7 @@ import argparse
 import geocoder
 import streamlit as st
 import requests, json
-from datetime import datetime, timedelta
+from datetime import datetime
 import datetime
 import pandas as pd
 from IPython import get_ipython
@@ -36,17 +36,17 @@ def get_friendly_datetime(city_name, longitude, latitude):
         return (f"Error: '{timezone_str}' is not a valid timezone.")
 
 def get_local_time():
-    local_date_time = None
+    local_date_time_1 = None
     try:
         geo = geocoder.ip('me')
         if geo.current_result is not None:
             coordinates = geo.latlng
             if coordinates is not None:
                 latitude, longitude = coordinates
-                local_date_time = get_friendly_datetime(geo.current_result.address, longitude, latitude)
-        return local_date_time
+                local_date_time_1 = get_friendly_datetime(geo.current_result.address, longitude, latitude)
+        return local_date_time_1
     except:
-        return local_date_time
+        return local_date_time_1
 
 def get_city_wheather_info(city_name):
     api_url = "http://api.openweathermap.org/data/2.5/weather?"
